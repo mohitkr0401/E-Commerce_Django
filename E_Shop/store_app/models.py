@@ -8,18 +8,18 @@ from django.db import models
 
 class Categories(models.Model):
     name = models.CharField(max_length= 200)
-    def __str__(self):
+    def __str__(self): #to display the actual name on the screen
         return self.name
 
 class Brand(models.Model):
     name = models.CharField(max_length=200)
-    def __str__(self):
+    def __str__(self): #to display the actual name on the screen
         return self.name
 
 class Color(models.Model):
     name = models.CharField(max_length=200)
     code = models.CharField(max_length=50)
-    def __str__(self):
+    def __str__(self): #to display the actual name on the screen
         return self.name
 
 class Filter_Price(models.Model):
@@ -28,10 +28,16 @@ class Filter_Price(models.Model):
         ('10000 TO 20000', '10000 TO 20000'),
         ('20000 TO 30000','20000 TO 30000'),
         ('30000 TO 40000', '30000 TO 40000'),
-        ('40000 TO 50000', '40000 TO 50000')
+        ('40000 TO 50000', '40000 TO 50000'),
+        ('50000 TO 60000','50000 TO 60000'),
+        ('60000 TO 70000','60000 TO 70000'),
+        ('70000 TO 80000','70000 TO 80000'),
+        ('80000 TO 90000','80000 TO 90000'),
+        ('90000 TO 100000','90000 TO 100000'),
+        ('Above 100000','Above 100000')
     )
     price = models.CharField(choices=FILTER_PRICE, max_length=60)
-    def __str__(self):
+    def __str__(self): #to display the actual name on the screen
         return self.price
 
 class Product(models.Model):
@@ -60,7 +66,7 @@ class Product(models.Model):
             self.unique_id=self.create_date.strftime('75%Y%m%d23') + str(self.id)
         return super().save(*args,**kwargs)
 
-    def __str__(self):
+    def __str__(self): #to display the actual name on the screen
         return self.name
 
 

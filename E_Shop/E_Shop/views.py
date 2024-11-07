@@ -1,5 +1,6 @@
 from django.shortcuts import redirect,render
 from django.template.context_processors import request
+from store_app.models import Product
 
 
 def BASE(request):
@@ -7,4 +8,8 @@ def BASE(request):
 
 
 def HOME(request):
-    return render(request, 'Main/index.html')
+    product = Product.objects.all()
+    context = {
+        'product':product,
+    }
+    return render(request, 'Main/index.html',context)
